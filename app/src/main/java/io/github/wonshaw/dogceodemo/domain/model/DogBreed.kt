@@ -23,15 +23,14 @@ data class DogBreed(
 }
 
 private val prefixSubBreeds = setOf(
-    "indian", "italian", "german", "french", "english", "scottish",
-    "japanese", "swedish", "norwegian", "spanish", "irish", "dutch",
-    "russian", "caucasian", "australian", "american", "welsh",
+    "indian", "italian", "german", "french", "english", "scottish", "japanese", "swedish",
+    "norwegian", "spanish", "irish", "dutch", "russian", "caucasian", "australian", "american",
+    "welsh", "bernese", "swiss", "staffordshire", "rhodesian",
 
-    "toy", "miniature", "standard", "medium", "giant"
+    "toy", "miniature", "standard", "medium", "giant", "great",
 )
 
 private val postfixBreeds = setOf(
-    "hound", "terrier", "retriever", "mastiff", "sheepdog", "bulldog",
-    "pointer", "spaniel", "elkhound", "waterdog", "wolfhound", "ridgeback",
-    "deerhound", "setter"
+    "hound", "terrier", "retriever", "mastiff", "sheepdog", "bulldog", "pointer", "spaniel",
+    "elkhound", "waterdog", "wolfhound", "ridgeback", "deerhound", "setter", "collie", "corgi",
 )
