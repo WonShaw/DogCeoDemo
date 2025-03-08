@@ -19,6 +19,7 @@ coli = "3.1.0"
 coroutine-test = "1.10.1"
 truth = "1.4.4"
 turbine = "1.2.0"
+okhttpBom = "4.12.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -53,6 +54,10 @@ mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 coroutine-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutine-test" }
 truth = { module = "com.google.truth:truth", version.ref = "truth" }
 turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
+okhttp-bom = { group = "com.squareup.okhttp3", name = "okhttp-bom", version.ref = "okhttpBom" }
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp" }
+okhttp-mockwebserver = { group = "com.squareup.okhttp3", name = "mockwebserver" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -60,6 +60,10 @@ dependencies {
     implementation(libs.compose.material3.windowsize)
     implementation(libs.compose.icon.extended)
 
+    // okhttp
+    implementation(platform(libs.okhttp.bom))
+    implementation(libs.okhttp)
+
     // coli
     implementation(libs.coli)
     implementation(libs.coli.okhttp)
@@ -86,6 +90,7 @@ dependencies {
     testImplementation(libs.truth)
     testImplementation(libs.coil.test)
     testImplementation(libs.turbine)
+    testImplementation(libs.okhttp.mockwebserver)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))

@@ -2,6 +2,8 @@ package io.github.wonshaw.dogceodemo.domain.usecase
 
 import android.content.Context
 import android.graphics.Bitmap
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.asImageBitmap
 import coil3.ImageLoader
 import coil3.request.ErrorResult
 import coil3.request.ImageRequest
@@ -62,11 +64,11 @@ class GetDogBreedQuizUseCase @Inject constructor(
 }
 
 interface ICoilResultToBitmapConverter {
-    fun convert(result: SuccessResult): Bitmap
+    fun convert(result: SuccessResult): ImageBitmap
 }
 
 class CoilResultToBitmapConverter : ICoilResultToBitmapConverter {
-    override fun convert(result: SuccessResult): Bitmap {
-        return result.image.toBitmap()
+    override fun convert(result: SuccessResult): ImageBitmap {
+        return result.image.toBitmap().asImageBitmap()
     }
 }

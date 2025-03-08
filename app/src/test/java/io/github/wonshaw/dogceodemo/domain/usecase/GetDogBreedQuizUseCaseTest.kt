@@ -59,7 +59,7 @@ class GetDogBreedQuizUseCaseTest {
         val mockRequest: ImageRequest = mockk()
         coEvery { imageLoader.execute(any()) } returns SuccessResult(mockBitmap, mockRequest)
 
-        every { converter.convert(any()) } returns mockk<Bitmap>()
+        every { converter.convert(any()) } returns mockk()
 
         val result = useCase.execute()
 

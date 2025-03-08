@@ -1,7 +1,6 @@
 package io.github.wonshaw.dogceodemo.presentation.quiz
 
 import androidx.compose.ui.graphics.ImageBitmap
-import androidx.compose.ui.graphics.asImageBitmap
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -47,7 +46,7 @@ class QuizViewModel @Inject constructor(private val useCase: GetDogBreedQuizUseC
                 _uiState.update {
                     it.copy(
                         breedOptions = breedOptions,
-                        imageBitmap = resultData.data.imageBitmap.asImageBitmap(),
+                        imageBitmap = resultData.data.imageBitmap,
                         errorMsg = null,
                         loading = false,
                     )

@@ -10,17 +10,6 @@ interface DogCeoApi {
     @GET("breeds/list/all")
     suspend fun getAllBreeds(): DogBreedsApiResponse
 
-    @GET("breed/{breed}/images")
-    suspend fun getBreedImages(
-        @Path("breed") breed: String
-    ): DogMultipleImagesApiResponse
-
-    @GET("breed/{breed}/{subBreed}/images")
-    suspend fun getSubBreedImages(
-        @Path("breed") breed: String,
-        @Path("subBreed") subBreed: String
-    ): DogMultipleImagesApiResponse
-
     @GET("breed/{breed}/images/random")
     suspend fun getRandomBreedImage(
         @Path("breed") breed: String

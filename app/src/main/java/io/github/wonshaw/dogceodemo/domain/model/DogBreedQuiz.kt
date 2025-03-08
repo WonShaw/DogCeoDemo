@@ -1,9 +1,9 @@
 package io.github.wonshaw.dogceodemo.domain.model
 
-import android.graphics.Bitmap
+import androidx.compose.ui.graphics.ImageBitmap
 
 class DogBreedQuiz(
-    val imageBitmap: Bitmap,
+    val imageBitmap: ImageBitmap,
     val options: List<DogBreed>,
     val correctAnswer: DogBreed,
 ) {
