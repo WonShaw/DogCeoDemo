@@ -39,6 +39,12 @@ android {
     buildFeatures {
         compose = true
     }
+
+    packaging {
+        resources {
+            merges += setOf("META-INF/LICENSE.md", "META-INF/LICENSE-notice.md")
+        }
+    }
 }
 
 dependencies {
@@ -85,7 +91,8 @@ dependencies {
 
     // test
     testImplementation(libs.junit)
-    testImplementation(libs.mockk)
+    testImplementation(libs.mockk.android)
+    testImplementation(libs.mockk.agent)
     testImplementation(libs.coroutine.test)
     testImplementation(libs.truth)
     testImplementation(libs.coil.test)
@@ -95,4 +102,6 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.compose.ui.test.junit4)
+    androidTestImplementation(libs.mockk.android)
+    androidTestImplementation(libs.mockk.agent)
 }

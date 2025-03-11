@@ -50,7 +50,8 @@ moshi-codegen = { group = "com.squareup.moshi", name = "moshi-kotlin-codegen", v
 coli = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coli"}
 coli-okhttp = { group = "io.coil-kt.coil3", name = "coil-network-okhttp", version.ref = "coli"}
 coil-test = { group = "io.coil-kt.coil3", name = "coil-test", version.ref = "coli" }
-mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+mockk-android = { module = "io.mockk:mockk-android", version.ref = "mockk" }
+mockk-agent = { module = "io.mockk:mockk-agent", version.ref = "mockk" }
 coroutine-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutine-test" }
 truth = { module = "com.google.truth:truth", version.ref = "truth" }
 turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }

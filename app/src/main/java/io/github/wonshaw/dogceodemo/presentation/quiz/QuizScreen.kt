@@ -1,5 +1,6 @@
 package io.github.wonshaw.dogceodemo.presentation.quiz
 
+import androidx.annotation.VisibleForTesting
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
@@ -36,6 +37,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -66,7 +68,8 @@ fun QuizScreenWithViewModel(
 }
 
 @Composable
-private fun QuizScreen(
+@VisibleForTesting
+fun QuizScreen(
     uiState: QuizViewUiState,
     landscape: Boolean = false,
     optionSelected: OptionSelectedCallback = {},
@@ -88,16 +91,23 @@ private fun QuizScreen(
 
     if (uiState.showCorrectAnswer != null) {
         AlertDialog(
+            modifier = Modifier.testTag(TEST_TAG_ANSWER_DIALOG),
             onDismissRequest = closeAnswerDialog,
             title = { Text(stringResource(R.string.correct_title)) },
             text = { Text(stringResource(R.string.yes_it_is_sth, uiState.showCorrectAnswer)) },
             confirmButton = {
-                Button(onClick = nextQuiz) {
+                Button(
+                    modifier = Modifier.testTag(TEST_TAG_ANSWER_DIALOG_CONFIRM),
+                    onClick = nextQuiz
+                ) {
                     Text(stringResource(R.string.next))
                 }
             },
             dismissButton = {
-                Button(onClick = closeAnswerDialog) {
+                Button(
+                    modifier = Modifier.testTag(TEST_TAG_ANSWER_DIALOG_DISMISS),
+                    onClick = closeAnswerDialog
+                ) {
                     Text(stringResource(R.string.close))
                 }
             },
@@ -130,7 +140,7 @@ fun ErrorView(errorMsg: String, retry: Callback) {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        Button(onClick = retry) {
+        Button(modifier = Modifier.testTag(TEST_TAG_RETRY_BUTTON), onClick = retry) {
             Text(stringResource(R.string.retry))
         }
     }
@@ -146,8 +156,9 @@ private fun LoadingView() {
             .clickable(
                 interactionSource = null,
                 indication = null
-            ) { },
-        contentAlignment = Alignment.Center
+            ) { }
+            .testTag(TEST_TAG_LOADING_VIEW),
+        contentAlignment = Alignment.Center,
     ) {
         CircularProgressIndicator(
             modifier = Modifier.size(64.dp),
@@ -163,20 +174,22 @@ private fun QuizContent(
     landscape: Boolean,
     optionSelected: OptionSelectedCallback = {}
 ) {
+    val modifier = Modifier.testTag(TEST_TAG_QUIZ_CONTENT)
     if (landscape) {
-        QuizContentLandscape(uiState, optionSelected)
+        QuizContentLandscape(uiState, modifier, optionSelected)
     } else {
-        QuizContentPortrait(uiState, optionSelected)
+        QuizContentPortrait(uiState, modifier, optionSelected)
     }
 }
 
 @Composable
 private fun QuizContentPortrait(
     uiState: QuizViewUiState,
+    modifier: Modifier,
     optionSelected: OptionSelectedCallback
 ) {
     Column(
-        modifier = Modifier.verticalScroll(rememberScrollState())
+        modifier = modifier.verticalScroll(rememberScrollState())
     ) {
         QuestionSection(uiState.imageBitmap)
         OptionsSection(uiState.breedOptions, optionSelected)
@@ -186,10 +199,11 @@ private fun QuizContentPortrait(
 @Composable
 private fun QuizContentLandscape(
     uiState: QuizViewUiState,
+    modifier: Modifier,
     optionSelected: OptionSelectedCallback
 ) {
     Row(
-        modifier = Modifier.fillMaxWidth()
+        modifier = modifier.fillMaxWidth()
     ) {
         QuestionSection(uiState.imageBitmap, modifier = Modifier.weight(14F))
         OptionsSection(uiState.breedOptions, optionSelected, modifier = Modifier.weight(10F))
@@ -370,3 +384,10 @@ fun QuizScreenLandscapePreview() {
         )
     }
 }
+
+const val TEST_TAG_LOADING_VIEW = "loadingView"
+const val TEST_TAG_ANSWER_DIALOG = "answerDialog"
+const val TEST_TAG_QUIZ_CONTENT = "quizContent"
+const val TEST_TAG_ANSWER_DIALOG_CONFIRM = "answerDialogConfirm"
+const val TEST_TAG_ANSWER_DIALOG_DISMISS = "answerDialogDismiss"
+const val TEST_TAG_RETRY_BUTTON = "retryButton"
