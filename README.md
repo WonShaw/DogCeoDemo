@@ -11,20 +11,21 @@ The app includes a **Quiz Page**, where a random dog image is displayed along wi
 This demo follows the Android recommended [architecture](https://developer.android.com/topic/architecture).  
 The code is structured as follows:
 
-- **`presentation`** - UI Layer  
-- **`domain`** - Domain Layer  
-- **`data`** - Data Layer  
-- **`di`** - Dependency Injection  
-
-The **UI Layer** is built using Jetpack Compose and follows the **MVVM** architecture.
+- **`presentation`** - UI Layer
+- **`domain`** - Domain Layer
+- **`data`** - Data Layer
+- **`di`** - Dependency Injection
+- **`test`** - Unit & Instrumented Testing
 
 ## Tech Stack
 
-- **Image Loading**: Coil  
-- **Networking**: Retrofit + OkHttp  
-- **Dependency Injection**: Hilt  
-- **JSON Serialization**: Moshi  
-- **Unit Testing**: JUnit, MockK  
+- **UI Layer**: Compose, MVVM
+- **Asynchronous Programming**: Kotlin Coroutines
+- **Image Loading**: Coil
+- **Networking**: Retrofit + OkHttp
+- **Dependency Injection**: Hilt
+- **JSON Serialization**: Moshi
+- **Testing**: JUnit, MockK, Turbine, Truth
 
 ---
 
