@@ -21,9 +21,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.DpSize
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -31,15 +28,15 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
 import io.github.wonshaw.dogceodemo.R
-import io.github.wonshaw.dogceodemo.presentation.gallery.GalleryScreen
-import io.github.wonshaw.dogceodemo.presentation.quiz.QuizScreenWithViewModel
-import io.github.wonshaw.dogceodemo.presentation.settings.SettingsScreen
 import io.github.wonshaw.dogceodemo.presentation.compose.theme.DogCeoDemoTheme
 import io.github.wonshaw.dogceodemo.presentation.compose.widget.BottomTabBar
 import io.github.wonshaw.dogceodemo.presentation.compose.widget.BottomTabBarItem
 import io.github.wonshaw.dogceodemo.presentation.compose.widget.ContentWithBottomTab
 import io.github.wonshaw.dogceodemo.presentation.compose.widget.ContentWithSideTab
 import io.github.wonshaw.dogceodemo.presentation.compose.widget.SideTabBar
+import io.github.wonshaw.dogceodemo.presentation.gallery.GalleryScreen
+import io.github.wonshaw.dogceodemo.presentation.quiz.QuizScreenWithViewModel
+import io.github.wonshaw.dogceodemo.presentation.settings.SettingsScreen
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -169,29 +166,31 @@ private fun MainContentHost(navController: NavHostController, paddingValues: Pad
     }
 }
 
-@OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
-@Preview(showBackground = true, name = "normal")
-@Composable
-fun MainTabPreview() {
-    DogCeoDemoTheme {
-        MainScreen(
-            tabInfoList = getTabInfos(),
-            windowSizeClass = WindowSizeClass.calculateFromSize(DpSize(360.dp, 640.dp)),
-        )
-    }
-}
+// HiltViewModel exists in a sub-layout, making preview unavailable.
 
-@OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
-@Preview(showBackground = true, name = "landscape")
-@Composable
-fun MainTabLandScapePreview() {
-    DogCeoDemoTheme {
-        MainScreen(
-            tabInfoList = getTabInfos(),
-            windowSizeClass = WindowSizeClass.calculateFromSize(DpSize(640.dp, 360.dp)),
-        )
-    }
-}
+//@OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
+//@Preview(showBackground = true, name = "normal")
+//@Composable
+//fun MainTabPreview() {
+//    DogCeoDemoTheme {
+//        MainScreen(
+//            tabInfoList = getTabInfos(),
+//            windowSizeClass = WindowSizeClass.calculateFromSize(DpSize(360.dp, 640.dp)),
+//        )
+//    }
+//}
+//
+//@OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
+//@Preview(showBackground = true, name = "landscape")
+//@Composable
+//fun MainTabLandScapePreview() {
+//    DogCeoDemoTheme {
+//        MainScreen(
+//            tabInfoList = getTabInfos(),
+//            windowSizeClass = WindowSizeClass.calculateFromSize(DpSize(640.dp, 360.dp)),
+//        )
+//    }
+//}
 
 private const val ROUTE_QUIZ = "quiz"
 private const val ROUTE_GALLERY = "gallery"
